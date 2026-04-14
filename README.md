@@ -1,5 +1,7 @@
 # zion — The Zion Boundary — Mapping the limits of human control over agentic AI. Adversarial robustness as humanity's last line of defense
 
+**Live:** <https://mukundakatta.github.io/zion/>
+
 The Zion Boundary — Mapping the limits of human control over agentic AI. Adversarial robustness as humanity's last line of defense. zion gives you a focused, inspectable implementation of that idea.
 
 ## Why zion

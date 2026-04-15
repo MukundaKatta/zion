@@ -1,55 +1,65 @@
-# zion — The Zion Boundary — Mapping the limits of human control over agentic AI. Adversarial robustness as humanity's last line of defense
+# zion
 
-**Live:** <https://mukundakatta.github.io/zion/>
+> The Zion Boundary — a toolkit for testing the limits of human control over agentic AI. Adversarial benchmarks for instruction-following, deception detection, sandbox escape prevention.
 
-The Zion Boundary — Mapping the limits of human control over agentic AI. Adversarial robustness as humanity's last line of defense.
+![status](https://img.shields.io/badge/status-active_planning-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+![backlog](https://img.shields.io/badge/backlog-see_DESIGN.md-orange)
 
-## Why zion
+## What this is
 
-zion exists to make this workflow practical. The zion boundary — mapping the limits of human control over agentic ai. adversarial robustness as humanity's last line of defense. It favours a small, inspectable surface over sprawling configuration.
+As AI agents take more autonomous actions (spending money, deploying code, sending emails), safety research on 'does this agent actually do what I asked' needs production-grade benchmarks and red-team tooling — not just academic papers. Alignment evals are either proprietary (Anthropic, OAI) or fragmented across research GitHub repos.
 
-## Features
+**Read the full [DESIGN.md](./DESIGN.md)** for problem statement, user personas, architecture, and roadmap.
 
-- CLI command `zion`
-- Included test suite
-- Worked examples included
+## Status
 
-## Tech Stack
+**Active planning / pre-alpha.** The design is scoped (see DESIGN.md). Code is minimal — this repo is the home for the first real implementation, not a placeholder.
 
-- **Runtime:** Python
-- **Frameworks:** Click
-- **AI/ML:** NumPy, OpenAI SDK, Anthropic SDK
-- **Tooling:** Rich, Pydantic
+## MVP (v0.1) — what ships first
 
-## How It Works
+- 5-10 well-designed instruction-injection tests
+- `zion eval my_agent.py` runs suite, outputs HTML report
+- Adapter pattern for agent wrappers (just needs a `run(prompt) -> response` function)
+- Deterministic scoring — each test has clear pass/fail
 
-The codebase is organised into `examples/`, `src/`, `tests/`. The primary entry points are `src/zion/cli.py`, `src/zion/__init__.py`. `src/zion/cli.py` exposes functions like `cli`, `audit`.
+## Stack
 
-## Getting Started
+- Python 3.11+
+- Anthropic + OpenAI + local model adapters
+- Standard eval harness compatible with Inspect (UK AISI's framework)
+- YAML-declared test suites
+- HTML report output
+
+See [DESIGN.md](./DESIGN.md#planned-stack) for complete stack rationale.
+
+## Quick start
 
 ```bash
-pip install -e .
-zion --help
+git clone https://github.com/MukundaKatta/zion.git
+cd zion
+# See DESIGN.md for full architecture
 ```
 
-## Usage
 
-```bash
-zion --help
-```
+## Roadmap
 
-## Project Structure
+| Version | Focus |
+|---------|-------|
+| v0.1 | MVP — see checklist in [DESIGN.md](./DESIGN.md) |
+| v0.2 | Sandbox-escape test suite |
+| v0.3 | Goal-hijack / deception tests (multi-turn) |
 
-```
-zion/
-├── .env.example
-├── CONTRIBUTING.md
-├── README.md
-├── config.example.yaml
-├── examples/
-├── index.html
-├── pyproject.toml
-├── requirements.txt
-├── src/
-├── tests/
-```
+Full roadmap in [DESIGN.md](./DESIGN.md#roadmap).
+
+## Contributing
+
+Open an issue if:
+- You'd use this tool and have a specific use case not covered
+- You spot a design flaw in DESIGN.md
+- You want to claim one of the v0.1 checklist items
+
+## See also
+
+- [My other projects](https://github.com/MukundaKatta)
+- [mukunda.dev](https://mukunda-ai.vercel.app)
